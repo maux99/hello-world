@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World Multilingua</title>
+    <style>
+      :root {
+        font-family: Arial, sans-serif;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #f3f4f6;
+      }
+      .card {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        width: min(90vw, 420px);
+      }
+      h1 {
+        margin-top: 0;
+      }
+      label,
+      select {
+        font-size: 1rem;
+      }
+      select {
+        width: 100%;
+        margin-top: 0.5rem;
+        padding: 0.6rem;
+      }
+      #message {
+        margin-top: 1.5rem;
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: #1f2937;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <h1>Seleziona una lingua</h1>
+      <label for="languageSelect">Lingua</label>
+      <select id="languageSelect" aria-label="Selezione lingua">
+        <option value="it">Italiano</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+        <option value="de">Deutsch</option>
+      </select>
+
+      <p id="message" aria-live="polite"></p>
+    </main>
+
+    <script>
+      const translations = {
+        it: "Ciao mondo",
+        en: "Hello world",
+        es: "Hola mundo",
+        fr: "Bonjour le monde",
+        de: "Hallo Welt",
+      };
+
+      const languageSelect = document.getElementById("languageSelect");
+      const message = document.getElementById("message");
+
+      function updateMessage() {
+        const selectedLanguage = languageSelect.value;
+        message.textContent = translations[selectedLanguage];
+      }
+
+      languageSelect.addEventListener("change", updateMessage);
+      updateMessage();
+    </script>
+  </body>
+</html>
